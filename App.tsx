@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Button, Alert} from 'react-native';
 
-function BotaoOpcao() 
+function BotaoOpcao({ title }: { title: string })
 {
+    const handlePress = () => {
+        Alert.alert("Você escolheu:", title);
+    };
+
     return (
-        <View style={styles.botao} />
+          <View style={styles.botao}>
+              <Button title={title} onPress={handlePress} />
+          </View>
     );
 }
 
 export default function App() {
   return (
     <View style={styles.container}>
-        <BotaoOpcao />        
-        <BotaoOpcao />
-        <Text>teste</Text>
-        <BotaoOpcao />                
+        <BotaoOpcao title="Paper" />
+        <BotaoOpcao title="Rock" />
+        <BotaoOpcao title="Scissors" />
     </View>
   );
 }
@@ -22,12 +26,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#EEE',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
   },
   botao: {
-    backgroundColor: '#EEE',
+    marginLeft: 3,
+    backgroundColor: '#DDD',
+    width: 100,
   }
 });
